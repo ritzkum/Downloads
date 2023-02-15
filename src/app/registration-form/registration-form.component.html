@@ -6,7 +6,8 @@
     <div class="form">
       <form [formGroup]="registerForm"  class="register-form" (ngSubmit)="registerProcess()">
         <input type="text" name="name" placeholder="Name" formControlName="name">
-        <input type="email" name="email" placeholder="Email" formControlName="email">
+        <input type="email" id="email" name="email" placeholder="Email" formControlName="email">
+        <!-- div -->
         <input type="password" name="password" placeholder="Password" formControlName="password">
         <button type="submit" class="btn" >Submit</button>
        
