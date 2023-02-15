@@ -32,7 +32,8 @@ export class RegistrationFormComponent implements OnInit  {
     this.registerDatas = this.registerForm.value;
     this.auth.postregister(this.registerForm.value).subscribe((result: any)=>{
       alert("Data Register Successfull")
-        console.log(result)
+      const data = result;
+      this.registerForm.reset();
          })
     console.log(this.registerDatas);
   }
