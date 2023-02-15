@@ -1,0 +1,17 @@
+
+<div class="container">
+    <div class="logo">
+        <img src="../../assets/img/Chetana-Logo.svg" alt="">
+    </div>
+    <div class="form">
+      <form [formGroup]="registerForm"  class="register-form" (ngSubmit)="registerProcess()">
+        <input type="text" name="name" placeholder="Name" formControlName="name">
+        <input type="email" name="email" placeholder="Email" formControlName="email">
+        <input type="password" name="password" placeholder="Password" formControlName="password">
+        <button type="submit" class="btn" >Submit</button>
+       
+        <!-- <p class="message">Already have account ? <a  (click)="login()">Login here</a></p> -->
+      </form> 
+      <p class="message">Already have account ? <a routerLink="/"  >Login here</a></p>
+    </div>
+  </div>

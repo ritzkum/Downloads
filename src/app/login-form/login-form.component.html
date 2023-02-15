@@ -1,0 +1,15 @@
+
+<div class="container">
+    <div class="logo">
+        <img src="../../assets/img/Chetana-Logo.svg" alt="">
+    </div>
+    <div class="form">
+      <form [formGroup]="form" class="login-form">
+        <input type="email" name="email" placeholder="Email" formControlName="email">
+        <input type="password" name="password" placeholder="Password" formControlName="password">  
+        <button type="submit" class="btn"(click)="loginSubmit(form.value)" [disabled]="form.invalid">Login</button>
+      </form>
+      <p class="message">Don't have account ?<a routerLink="/register" >Register now</a></p>
+    </div>
+  </div>
+
