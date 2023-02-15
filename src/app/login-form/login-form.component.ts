@@ -25,10 +25,10 @@ export class LoginFormComponent implements OnInit {
 
   loginSubmit(data:any){
     this.auth.postlogin(this.form.value).subscribe((res)=>{
-      
-      // console.log(res);
-      // console.log(data)
       alert("Login successful")
+      const data = res;
+      this.form.reset();
+      
     })
     // if(this.form){
     //  alert("hghgh")
