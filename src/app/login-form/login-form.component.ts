@@ -22,8 +22,17 @@ export class LoginFormComponent implements OnInit {
     })
   }
 
+  loginSubmit(){
+    if(this.form.invalid){
+      alert('Data should not be empty');
+    return;
+    }
+    this.Submitlogin()
 
-  loginSubmit(data:any){
+  }
+
+
+  Submitlogin(){
    
       this.auth.postlogin(this.form.value).subscribe((res:any)=>{
         localStorage.setItem('token', res.Token);
