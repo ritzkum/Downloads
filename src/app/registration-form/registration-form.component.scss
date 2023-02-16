@@ -1,12 +1,5 @@
 
 .container {
-    // background-image: url("../../assets/img/Chetana\ Building.jpeg");
-    // background-color: white;
-    // border: 1px solid blue;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
     position: absolute;
     margin-top: 3rem;
     width: 21rem;
@@ -67,6 +60,11 @@
             cursor: pointer;
             color: blue;
         }
+    }
+    .pass{
+        color: red;
+        text-align: left;
+        width: 100%;
     }
 }
 
