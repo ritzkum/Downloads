@@ -24,19 +24,20 @@ export class LoginFormComponent implements OnInit {
 
 
   loginSubmit(data:any){
-    this.auth.postlogin(this.form.value).subscribe((res)=>{
-      alert("Login successful")
-      const data = res;
-      this.form.reset();
+   
+      this.auth.postlogin(this.form.value).subscribe((res:any)=>{
+        localStorage.setItem('token', res.Token);
+          alert('Login successful');
+        this.form.reset();
+      },
+      (error: any) => {
+        alert('** Please check email or password is correct!');
+        this.form.reset();
+      }
+      );
       
-    })
-    // if(this.form){
-    //  alert("hghgh")
-     
-    // }
-  //  alert("hi")
-  
+    }
+    
   }
   
 
-}
