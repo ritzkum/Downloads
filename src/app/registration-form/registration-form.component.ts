@@ -35,6 +35,7 @@ export class RegistrationFormComponent implements OnInit {
 
 
   registerProcess() {
+
     this.getRegister();
   }
 
@@ -68,6 +69,7 @@ export class RegistrationFormComponent implements OnInit {
         console.log(this.registerDatas);
       }
     })
+  
   }
 
 
@@ -79,6 +81,7 @@ export class RegistrationFormComponent implements OnInit {
       this.registerForm.reset();
     })
     console.log(this.registerDatas);
+    
   }
 
 
