@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { debounceTime, Observable, tap } from 'rxjs';
 import { AuthService } from '../service/auth.service';
 import { Iregistration } from '../service/interface';
@@ -14,7 +15,7 @@ export class RegistrationFormComponent implements OnInit {
 
   registerDatas: Iregistration[] = []
   registerForm: any = FormGroup
-  constructor(private auth: AuthService, private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private auth: AuthService, private fb: FormBuilder, private http: HttpClient,private router: Router) { }
 
 
   ngOnInit() {
@@ -60,10 +61,9 @@ export class RegistrationFormComponent implements OnInit {
       else {
         this.auth.postregister(this.registerForm.value).subscribe((result: any) => {
 
-          alert("Data Register Successfull")
-          const data = result;
-          console.log(data);
+          alert("Data Register Successfull");
           this.registerForm.reset();
+          this.router.navigate(['/']);
         })
         console.log(this.registerDatas);
       }
@@ -77,6 +77,7 @@ export class RegistrationFormComponent implements OnInit {
       alert("Data Register Successfull")
       const data = result;
       this.registerForm.reset();
+      this.router.navigate(['/']);
     })
     console.log(this.registerDatas);
   }

@@ -26,7 +26,7 @@ export class LoginFormComponent implements OnInit {
   loginSubmit(data:any){
    
       this.auth.postlogin(this.form.value).subscribe((res:any)=>{
-        localStorage.setItem('token', res.Token);
+        localStorage.setItem('Token', res.Token);
           alert('Login successful');
         this.form.reset();
       },
