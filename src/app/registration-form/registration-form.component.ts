@@ -25,9 +25,9 @@ export class RegistrationFormComponent implements OnInit {
 
   initForm() {
     this.registerForm = this.fb.group({
-      name: new FormControl('', [Validators.required, Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.required])
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
 
 
@@ -36,6 +36,10 @@ export class RegistrationFormComponent implements OnInit {
 
 
   registerProcess() {
+    if(this.registerForm.invalid){
+      alert('Data should not be empty');
+    return;
+    }
     this.getRegister();
   }
 
@@ -68,6 +72,7 @@ export class RegistrationFormComponent implements OnInit {
         console.log(this.registerDatas);
       }
     })
+  
   }
 
 
@@ -80,6 +85,7 @@ export class RegistrationFormComponent implements OnInit {
       this.router.navigate(['/']);
     })
     console.log(this.registerDatas);
+    
   }
 
 
