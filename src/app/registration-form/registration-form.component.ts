@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { debounceTime, Observable, tap } from 'rxjs';
 import { AuthService } from '../service/auth.service';
 import { Iregistration } from '../service/interface';
@@ -13,34 +14,60 @@ import { Iregistration } from '../service/interface';
 export class RegistrationFormComponent implements OnInit {
 
   registerDatas: Iregistration[] = []
-  registerForm: any = FormGroup
-  constructor(private auth: AuthService, private fb: FormBuilder, private http: HttpClient) { }
+  registerForm: any = FormGroup;
+  submitted = false;
+
+  constructor(private auth: AuthService, private fb: FormBuilder, private http: HttpClient,private router: Router) { }
 
 
   ngOnInit() {
-    this.initForm();
-    // this.checkEmail();
-  }
-
-  initForm() {
+    // this.initForm();
     this.registerForm = this.fb.group({
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
-    });
-
-
+      firstName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+  });
+    
   }
 
+
+
+
+  get f() { return this.registerForm.controls; }
 
 
   registerProcess() {
-    if(this.registerForm.invalid){
-      alert('Data should not be empty');
-    return;
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+        return;
     }
+
     this.getRegister();
-  }
+}
+
+
+
+
+
+  // initForm() {
+  //   this.registerForm = this.fb.group({
+  //     name: new FormControl('', Validators.required),
+  //     email: new FormControl('', Validators.required),
+  //     password: new FormControl('', Validators.required)
+  //   });
+
+
+  // }
+
+
+
+  // registerProcess() {
+  //   if(this.registerForm.invalid){
+  //     alert('Data should not be empty');
+  //   return;
+  //   }
+  //   this.getRegister();
+  // }
 
 
 
@@ -64,10 +91,9 @@ export class RegistrationFormComponent implements OnInit {
       else {
         this.auth.postregister(this.registerForm.value).subscribe((result: any) => {
 
-          alert("Data Register Successfull")
-          const data = result;
-          console.log(data);
+          alert("Data Register Successfull");
           this.registerForm.reset();
+          this.router.navigate(['/']);
         })
         console.log(this.registerDatas);
       }
@@ -82,6 +108,7 @@ export class RegistrationFormComponent implements OnInit {
       alert("Data Register Successfull")
       const data = result;
       this.registerForm.reset();
+      this.router.navigate(['/']);
     })
     console.log(this.registerDatas);
     
