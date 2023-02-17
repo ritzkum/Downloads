@@ -9,6 +9,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class LoginFormComponent implements OnInit {
   form:any = FormGroup;
+  submitted = false;
   constructor( private auth : AuthService, private fb:FormBuilder) { 
     
   }
@@ -22,10 +23,12 @@ export class LoginFormComponent implements OnInit {
     })
   }
 
+  get f() { return this.form.controls; }
+
   loginSubmit(){
-    if(this.form.invalid){
-      alert('Data should not be empty');
-    return;
+    this.submitted = true;
+    if (this.form.invalid) {
+        return;
     }
     this.Submitlogin()
 

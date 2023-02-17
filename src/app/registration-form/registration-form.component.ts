@@ -14,34 +14,60 @@ import { Iregistration } from '../service/interface';
 export class RegistrationFormComponent implements OnInit {
 
   registerDatas: Iregistration[] = []
-  registerForm: any = FormGroup
+  registerForm: any = FormGroup;
+  submitted = false;
+
   constructor(private auth: AuthService, private fb: FormBuilder, private http: HttpClient,private router: Router) { }
 
 
   ngOnInit() {
-    this.initForm();
-    // this.checkEmail();
-  }
-
-  initForm() {
+    // this.initForm();
     this.registerForm = this.fb.group({
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
-    });
-
-
+      firstName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+  });
+    
   }
 
+
+
+
+  get f() { return this.registerForm.controls; }
 
 
   registerProcess() {
-    if(this.registerForm.invalid){
-      alert('Data should not be empty');
-    return;
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+        return;
     }
+
     this.getRegister();
-  }
+}
+
+
+
+
+
+  // initForm() {
+  //   this.registerForm = this.fb.group({
+  //     name: new FormControl('', Validators.required),
+  //     email: new FormControl('', Validators.required),
+  //     password: new FormControl('', Validators.required)
+  //   });
+
+
+  // }
+
+
+
+  // registerProcess() {
+  //   if(this.registerForm.invalid){
+  //     alert('Data should not be empty');
+  //   return;
+  //   }
+  //   this.getRegister();
+  // }
 
 
 
