@@ -6,6 +6,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     LoginFormComponent,
     RegistrationFormComponent,
+    DashboardComponent,
     
   ],
   imports: [
