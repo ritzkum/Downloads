@@ -21,7 +21,6 @@ export class RegistrationFormComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.initForm();
     this.registerForm = this.fb.group({
       firstName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
@@ -44,32 +43,6 @@ export class RegistrationFormComponent implements OnInit {
 
     this.getRegister();
 }
-
-
-
-
-
-  // initForm() {
-  //   this.registerForm = this.fb.group({
-  //     name: new FormControl('', Validators.required),
-  //     email: new FormControl('', Validators.required),
-  //     password: new FormControl('', Validators.required)
-  //   });
-
-
-  // }
-
-
-
-  // registerProcess() {
-  //   if(this.registerForm.invalid){
-  //     alert('Data should not be empty');
-  //   return;
-  //   }
-  //   this.getRegister();
-  // }
-
-
 
   getRegister() {
     this.registerDatas = this.registerForm.value;
