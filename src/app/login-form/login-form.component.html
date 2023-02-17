@@ -4,21 +4,6 @@
         <img src="../../assets/img/Chetana-Logo.svg" alt="">
     </div>
     <div class="form">
-      <!-- <form [formGroup]="form" class="login-form">
-        <input type="email" name="email" placeholder="Email" formControlName="email">
-        <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)">
-          <div *ngIf="form.controls['email'].errors.required"  class="pass">Email is required.</div>
-          <div *ngIf="form.controls['email'].errors.email"  class="pass">Invalid email registerFormat @ and .com should be there.</div>
-        </div>
-
-        <input type="password" name="password" placeholder="Password" formControlName="password">  
-        <div *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)">
-          <div *ngIf="form.controls['password'].errors.required" class="pass">Password is required.</div>
-        </div>
-
-
-        <button type="submit" class="btn"(click)="loginSubmit()">Login</button>
-      </form> -->
       <form [formGroup]="form" (ngSubmit)="loginSubmit()">
 
         <div class="form-group">
@@ -38,7 +23,7 @@
             </div>
         </div>
         <div class="form-group col-md-50 soffset-md-0">
-            <button class="btn btn-primary">Register</button>
+            <button class="btn btn-primary">Login</button>
             
         </div>
         
